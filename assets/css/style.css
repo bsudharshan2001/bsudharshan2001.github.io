@@ -23,6 +23,20 @@ a:hover {
   text-decoration: none;
 }
 
+/* Inline link styling */
+.inline-link {
+  color: #3e91ff;
+  font-weight: 600;
+  padding-bottom: 1px;
+  border-bottom: 1px solid rgba(62, 145, 255, 0.3);
+  transition: border-color 0.2s ease;
+}
+
+.inline-link:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #3e91ff;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
