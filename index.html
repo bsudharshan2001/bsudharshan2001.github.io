@@ -1,534 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Sudharshan Balaji - Resume - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: MyResume - v4.7.0
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Website</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a2030;
+            --light-bg: #fff;
+            --text-color: #333;
+            --text-light: #f0f0f0;
+            --accent-blue: #3e91ff;
+            --accent-red: #ff5252;
+            --accent-purple: #bb6bd9;
+            --accent-green: #4cd964;
+            --accent-yellow: #ffcc00;
+            --max-width: 800px;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Styled inline link */
+        .inline-link {
+            color: var(--accent-blue);
+            font-weight: 600;
+            padding-bottom: 1px;
+            border-bottom: 1px solid rgba(62, 145, 255, 0.3);
+            transition: border-color 0.2s ease;
+        }
+        
+        .inline-link:hover {
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-blue);
+        }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Navigation styles */
+        .navbar {
+            background-color: var(--dark-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            font-weight: bold;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .nav-logo span:nth-child(1) { color: var(--accent-blue); }
+        .nav-logo span:nth-child(2) { color: var(--accent-green); }
+        .nav-logo span:nth-child(3) { color: var(--accent-purple); }
+        .nav-logo span:nth-child(4) { color: var(--accent-yellow); }
+        .nav-logo span:nth-child(5) { color: var(--accent-red); }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        .nav-links a.active {
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+        
+        /* Header styles */
+        .header-container {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .logo-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .logo span:nth-child(1) { color: var(--accent-blue); }
+        .logo span:nth-child(2) { color: var(--accent-green); }
+        .logo span:nth-child(3) { color: var(--accent-purple); }
+        .logo span:nth-child(4) { color: var(--accent-yellow); }
+        .logo span:nth-child(5) { color: var(--accent-blue); }
+        .logo span:nth-child(6) { color: var(--accent-red); }
+        
+        .header-intro {
+            max-width: 600px;
+        }
+        
+        .header-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .header-links a {
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .header-links a i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .highlighted {
+            font-weight: bold;
+        }
+        
+        .blue { color: var(--accent-blue); }
+        .red { color: var(--accent-red); }
+        .purple { color: var(--accent-purple); }
+        .green { color: var(--accent-green); }
+        .yellow { color: var(--accent-yellow); }
+        
+        .hand-wave {
+            display: inline-block;
+            animation: wave 2.5s infinite;
+            transform-origin: 70% 70%;
+        }
+        
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        .commit-info {
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+        
+        /* Contact link styling */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            transition: color 0.2s ease;
+        }
+        
+        .contact-link svg {
+            color: var(--accent-blue);
+        }
+        
+        .contact-link:hover {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            font-family: Georgia, serif;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 1px;
+            background-color: var(--border-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .publication, .experience, .teaching-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .publication:last-child, .experience:last-child, .teaching-item:last-child {
+            border-bottom: none;
+        }
+        
+        .publication-title, .experience-title, .teaching-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: Georgia, serif;
+        }
+        
+        .publication-authors, .experience-period, .teaching-period {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication-venue {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .abstract {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-blue);
+        }
+        
+        .publication-links a {
+            margin-right: 1rem;
+            color: var(--accent-blue);
+        }
+        
+        .year-label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+        
+        .pub-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent-blue);
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .teaching-divider {
+            border: none;
+            border-top: 1px solid #e5e5e5;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .course-item {
+            padding-left: 20px;
+            border-left: 4px solid var(--accent-blue);
+            margin-bottom: 2rem;
+        }
+        
+        .course-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: Georgia, serif;
+        }
+        
+        .course-period {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-details {
+            margin-top: 0.5rem;
+        }
+        
+        .authors-note {
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .note-symbol {
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-color);
+        }
+        
+        /* Contact link styles for different sections */
+        footer .contact-link {
+            color: var(--text-color);
+        }
+        
+        footer .contact-link:hover {
+            color: var(--accent-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .header-links {
+                margin-top: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+            
+            .nav-logo {
+                margin-bottom: 0.5rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-  <!-- ======= Mobile nav toggle button ======= -->
-  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex flex-column justify-content-center">
-
-    <nav id="navbar" class="navbar nav-menu">
-      <ul>
-        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-        <!--<li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>-->
-        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-      </ul>
-    </nav><!-- .nav-menu -->
-
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Sudharshan Balaji</h1>
-      <p>I'm a <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer">ML Enthusiast and Full-Stack Developer</span></p>
-      <div class="social-links">
-        <a href="https://twitter.com/bsudharshan2001" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.linkedin.com/in/sudharshanbalaji/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="color: inherit; text-decoration: none;">
+                    <span>Y</span><span>o</span><span>u</span><span>r</span><span>Name</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">About</a>
+                <a href="experience.html">Experience</a>
+                <a href="publications.html">Publications</a>
+                <a href="projects.html">Projects</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
     </div>
-  </section><!-- End Hero -->
 
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Hello, I'm Sudharshan Balaji, currently pursuing 3rd B.Tech Computer Science Enginnering at Amrita Vishwa Vidyapeetham, Coimbatore. I am a Highly motivated and tech-savvy individual actively seeking a challenging role at a progressive
-            organization that offers immense growth opportunities and collect relevant experience implementing
-            my advanced knowledge in Machine Learning, Data Analytics, App Development and related areas,
-            and skills to contribute to the success of the organization.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4">
-            <img src="assets/img/CV_Photo.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Full-Stack Developer &amp; Web Developer.</h3>
-            <p class="fst-italic">
-              Link to my resume: <a href="https://drive.google.com/file/d/1fZS7NzBA2vjUsYKOkG4-BcBYIh57RRHd/view?usp=sharing" target="_blank">Download here</a>
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>9 June 2001</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="www.sudharshanbalaji.me">www.sudharshanbalaji.me</a></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91 9677090679</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Chennai, Tamilnadu</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>20</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Tech</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>bsudharshan2001@gmail.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Technical Skills</h2>
-          <p>Ever since I laid my hands on a computer, It has been a love at first sight. This love of computers made me take its study as my career. Web is one of the most intriguing aspect of a computer, so I honed my skills in web development.</p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">HTML <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">CSS <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">JavaScript <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">C++ <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Python <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">MongoDB <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Resume</h2>
-          <p>A quick learner who is ready to face any kind of situations. My creativity is yet another positive trait that is demonstrated in my projects. I’m a calm and composed person who believes in action rather than words.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <h3 class="resume-title">Sumary</h3>
-            <div class="resume-item pb-0">
-              <h4>Sudharshan Balaji</h4>
-              <p><em>Creative and innovative developer with sound knowledge in high in-demand skills accompanied with deeply rooted basics.</em></p>
-              <ul>
-                <li>51, Audiappa Naick Street, Sowcarpet, Chennai - 79</li>
-                <li>(+91) 9677090679</li>
-                <li>bsudharshan2001@gmail.com</li>
-              </ul>
-            </div>
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>B.Tech in Computer Science Enginnering</h4>
-              <h5>2019 - 2023</h5>
-              <p><em>Amrita Vishwa Vidyapeetham, Coimbatore</em></p>
-              <p><em>Current CGPA: 8.68</em></p>
-              <p>Recipient of Amrita Vidhyanidhi Scholarship (90%), Took part in various Hackathons, active contributor to GitHub and FOSS.</p>
-            </div>
-            <div class="resume-item">
-              <h4>Higher Secondary Education</h4>
-              <h5>2007 - 2019</h5>
-              <p><em>Maharishi Vidhya Mandir, Chetpet, Chennai</em></p>
-              <p>Scored 9.8/10 in Class 10 CBSE Board Examinations and 456/500 (91%) in Class 12th CBSE Board Examinations</p>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <h3 class="resume-title">Projects</h3>
-            <div class="resume-item">
-              <h4>Interactive app for People with Speech and Hearing Disability</h4>
-              <h5>2020</h5>
-              <ul>
-                <li>Designed and Developed an interactive flutter app for people withspeech and hearing disability
-                  incorporating Indian Sign Language
-                  </li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Full Fledged Community Management App</h4>
-              <h5>2021</h5>
-              <ul>
-                <li>Lead a team to Design and
-                  Develop a Community Management App
-                  for HoneyWell Smart City Hackathon
-                  2021.</li>
-                <li>Placed among Top 25 Teams
-                  among 800+ teams all over India.
-                  </li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Speech Recognition Model</h4>
-              <h5>2020</h5>
-              <ul>
-                <li>Designed and Developed a
-                  Speech Recognition Model which involved
-                  extensive use of Natural Language Processing
-                  and Theory of Computation models.
-                  </li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Prediction of Bone age using Patient Data</h4>
-              <h5>2021</h5>
-              <ul>
-                <li>Implemented various Machine Learning Models and Image
-                  processing to determine Bone age and Bone density using Patient data
-                  (X-Ray Scans)
-                  </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Portfolio Section ======= 
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>The world of software development is massive, and here's what I have explored!.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+    <div class="header-container">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-intro">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <span>y</span><span>o</span><span>u</span><span>r</span><span>n</span><span>ame</span>
+                        </div>
+                    </div>
+                    <p>Hi there! <span class="hand-wave">👋</span></p>
+                    <p>I'm <span class="highlighted blue">Sudharshan Balaji</span>. I'm a <span class="highlighted green">[Your Profession]</span> at <span class="highlighted">[Your Organization]</span>. My research broadly combines <span class="highlighted red">research area 1</span>, <span class="highlighted purple">research area 2</span>, <span class="highlighted blue">research area 3</span>, <span class="highlighted green">research area 4</span>, and <span class="highlighted yellow">research area 5</span> to produce, build, and analyze [what you do].</p>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                <div class="header-links">
+                    <a href="mailto:sudharshanbalaji@usf.edu" class="contact-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>sudharshanbalaji@usf.edu</span>
+                    </a>
+                    <a href="https://github.com/bsudharshan2001" class="contact-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        <span>bsudharshan2001</span>
+                    </a>
+                    <a href="https://linkedin.com/in/sudharshanbalaji" class="contact-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <span>Sudharshan Balaji</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=z-TM7EYAAAAJ&hl=en" class="contact-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                        <span>Scholar</span>
+                    </a>
+                    <div class="commit-info">
+                        Last updated with commit <a href="https://github.com/bsudharshan2001/bsudharshan2001.github.io/commits/main/" style="color: inherit; text-decoration: underline;">#3612540</a>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
+    </div>
 
-      </div>
-    </section> End Portfolio Section -->
-
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-        </div>
-
-        <div class="row mt-1">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>51, Audiappa Naick Street, Sowcarpet, Chennai - 600079</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>bsudharshan2001@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+91 9677090679</p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
     <div class="container">
-      <h3>Sudharshan Balaji</h3>
-      <p>Efficient and Innovative.</p>
-      <div class="social-links">
-        <a href="https://twitter.com/bsudharshan2001" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.linkedin.com/in/sudharshanbalaji/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>Sudharshan Balaji</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: [license-url] -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+        <section id="about">
+            <h2 class="section-title">About</h2>
+            <p>My name is <span class="highlighted blue">Sudharshan Balaji</span>. My pronouns are [Your Pronouns]. I'm currently a <a href="#" class="inline-link">Researcher</a> at <a href="https://www.usf.edu" class="inline-link">University of South Florida</a>.</p>
+            
+            <p>My work/research focuses on [Detailed Description of Your Work]. I combine interests in <a href="#" class="inline-link">machine learning</a>, <a href="#" class="inline-link">data visualization</a>, and <a href="#" class="inline-link">human-computer interaction</a> to create innovative solutions.</p>
+            
+            <p>I completed my <a href="#" class="inline-link">Master's degree</a> at <a href="#" class="inline-link">University of South Florida</a>. My studies were focused on [Your Focus Areas].</p>
+            
+            <p>Previously, I worked at [Previous Organizations/Companies] where I [Brief Description of What You Did].</p>
+            
+            <p>Outside of work, I enjoy [Your Hobbies/Interests].</p>
+        </section>
+        
+        
+    <footer>
+        <p>&copy; <span id="year">2023</span> Sudharshan Balaji</p>
+        <div class="footer-links">
+            <a href="mailto:sudharshanbalaji@usf.edu" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>Email</span>
+            </a>
+            <a href="https://github.com/bsudharshan2001" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/sudharshanbalaji" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+    </footer>
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+    <script>
+        // Update copyright year automatically
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Fetch latest commit and update the commit info
+        fetch('https://api.github.com/repos/bsudharshan2001/bsudharshan2001.github.io/commits/main')
+            .then(response => response.json())
+            .then(data => {
+                const commitHash = data.sha.substring(0, 7); // Get first 7 characters of commit hash
+                const commitLink = document.querySelector('.commit-info a');
+                if (commitLink) {
+                    commitLink.textContent = '#' + commitHash;
+                }
+            })
+            .catch(error => console.error('Error fetching latest commit:', error));
+    </script>
 </body>
-
 </html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Your Name</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a2030;
+            --light-bg: #fff;
+            --text-color: #333;
+            --text-light: #f0f0f0;
+            --accent-blue: #3e91ff;
+            --accent-red: #ff5252;
+            --accent-purple: #bb6bd9;
+            --accent-green: #4cd964;
+            --accent-yellow: #ffcc00;
+            --max-width: 800px;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Styled inline link */
+        .inline-link {
+            color: var(--accent-blue);
+            font-weight: 600;
+            padding-bottom: 1px;
+            border-bottom: 1px solid rgba(62, 145, 255, 0.3);
+            transition: border-color 0.2s ease;
+        }
+        
+        .inline-link:hover {
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-blue);
+        }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Navigation styles */
+        .navbar {
+            background-color: var(--dark-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            font-weight: bold;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .nav-logo span:nth-child(1) { color: var(--accent-blue); }
+        .nav-logo span:nth-child(2) { color: var(--accent-green); }
+        .nav-logo span:nth-child(3) { color: var(--accent-purple); }
+        .nav-logo span:nth-child(4) { color: var(--accent-yellow); }
+        .nav-logo span:nth-child(5) { color: var(--accent-red); }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        .nav-links a.active {
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            font-family: Georgia, serif;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 1px;
+            background-color: var(--border-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .experience {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .experience:last-child {
+            border-bottom: none;
+        }
+        
+        .experience-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: Georgia, serif;
+        }
+        
+        .experience-period {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blue { color: var(--accent-blue); }
+        
+        /* Contact link styling */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            transition: color 0.2s ease;
+        }
+        
+        .contact-link svg {
+            color: var(--accent-blue);
+        }
+        
+        .contact-link:hover {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-color);
+        }
+        
+        /* Contact link styles for different sections */
+        footer .contact-link {
+            color: var(--text-color);
+        }
+        
+        footer .contact-link:hover {
+            color: var(--accent-blue);
+        }
+        
+        /* Project specific styles */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f5f5f5;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: Georgia, serif;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0 1rem;
+        }
+        
+        .tech-tag {
+            background-color: #f0f0f0;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+            
+            .nav-logo {
+                margin-bottom: 0.5rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="color: inherit; text-decoration: none;">
+                    <span>Y</span><span>o</span><span>u</span><span>r</span><span>Name</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="experience.html">Experience</a>
+                <a href="publications.html">Publications</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-img"></div>
+                    <div class="project-content">
+                        <div class="project-title">Project Name</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                        <p>Description of the project, its purpose, and your contribution.</p>
+                        <p><a href="#" class="blue">Project Link</a></p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img"></div>
+                    <div class="project-content">
+                        <div class="project-title">Another Project</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                        <p>Description of the project, its purpose, and your contribution.</p>
+                        <p><a href="#" class="blue">Project Link</a></p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img"></div>
+                    <div class="project-content">
+                        <div class="project-title">Third Project</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">OpenGL</span>
+                            <span class="tech-tag">Graphics</span>
+                        </div>
+                        <p>Description of the project, its purpose, and your contribution.</p>
+                        <p><a href="#" class="blue">Project Link</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="experience" style="margin-top: 3rem;">
+                <div class="experience-title">Other Notable Projects</div>
+                <div class="experience-period">Technologies Used</div>
+                <p>Description of the project, its purpose, and your contribution.</p>
+                <p><a href="#" class="blue">Project Link</a></p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; <span id="year">2023</span> Sudharshan Balaji</p>
+            <div class="footer-links">
+                <a href="mailto:sudharshanbalaji@usf.edu" class="contact-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>Email</span>
+                </a>
+                <a href="https://github.com/bsudharshan2001" class="contact-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/sudharshanbalaji" class="contact-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Update copyright year automatically
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html> 

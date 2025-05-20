@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Your Name</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a2030;
+            --light-bg: #fff;
+            --text-color: #333;
+            --text-light: #f0f0f0;
+            --accent-blue: #3e91ff;
+            --accent-red: #ff5252;
+            --accent-purple: #bb6bd9;
+            --accent-green: #4cd964;
+            --accent-yellow: #ffcc00;
+            --max-width: 800px;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Styled inline link */
+        .inline-link {
+            color: var(--accent-blue);
+            font-weight: 600;
+            padding-bottom: 1px;
+            border-bottom: 1px solid rgba(62, 145, 255, 0.3);
+            transition: border-color 0.2s ease;
+        }
+        
+        .inline-link:hover {
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-blue);
+        }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Navigation styles */
+        .navbar {
+            background-color: var(--dark-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            font-weight: bold;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .nav-logo span:nth-child(1) { color: var(--accent-blue); }
+        .nav-logo span:nth-child(2) { color: var(--accent-green); }
+        .nav-logo span:nth-child(3) { color: var(--accent-purple); }
+        .nav-logo span:nth-child(4) { color: var(--accent-yellow); }
+        .nav-logo span:nth-child(5) { color: var(--accent-red); }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        .nav-links a.active {
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            font-family: Georgia, serif;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 1px;
+            background-color: var(--border-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .experience, .teaching-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .experience:last-child, .teaching-item:last-child {
+            border-bottom: none;
+        }
+        
+        .experience-title, .teaching-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: Georgia, serif;
+        }
+        
+        .experience-period, .teaching-period {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .teaching-divider {
+            border: none;
+            border-top: 1px solid #e5e5e5;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .course-item {
+            padding-left: 20px;
+            border-left: 4px solid var(--accent-blue);
+            margin-bottom: 2rem;
+        }
+        
+        .course-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: Georgia, serif;
+        }
+        
+        .course-period {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-details {
+            margin-top: 0.5rem;
+        }
+        
+        .authors-note {
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .note-symbol {
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+        
+        /* Contact link styling */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            transition: color 0.2s ease;
+        }
+        
+        .contact-link svg {
+            color: var(--accent-blue);
+        }
+        
+        .contact-link:hover {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-color);
+        }
+        
+        /* Contact link styles for different sections */
+        footer .contact-link {
+            color: var(--text-color);
+        }
+        
+        footer .contact-link:hover {
+            color: var(--accent-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+            
+            .nav-logo {
+                margin-bottom: 0.5rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="color: inherit; text-decoration: none;">
+                    <span>Y</span><span>o</span><span>u</span><span>r</span><span>Name</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="experience.html" class="active">Experience</a>
+                <a href="publications.html">Publications</a>
+                <a href="projects.html">Projects</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience">
+                <div class="experience-title">Your Position</div>
+                <div class="experience-period">Organization/Company, Time Period</div>
+                <p>Description of what you did in this role, your responsibilities, achievements, and the skills you developed or applied.</p>
+                <ul>
+                    <li>Key responsibility or achievement</li>
+                    <li>Another key responsibility or achievement</li>
+                    <li>Yet another key responsibility or achievement</li>
+                </ul>
+            </div>
+            
+            <div class="experience">
+                <div class="experience-title">Previous Position</div>
+                <div class="experience-period">Previous Organization, Time Period</div>
+                <p>Description of what you did in this role, your responsibilities, achievements, and the skills you developed or applied.</p>
+                <ul>
+                    <li>Key responsibility or achievement</li>
+                    <li>Another key responsibility or achievement</li>
+                    <li>Yet another key responsibility or achievement</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="teaching">
+            <h2 class="section-title">Teaching</h2>
+            
+            <div class="authors-note">
+                I served as a teaching assistant every semester I was at [Your Institution], sometimes even during semesters I wasn't enrolled. <span class="note-symbol">⁂</span> denotes a Head Teaching Assistant role.
+            </div>
+            
+            <hr class="teaching-divider">
+            
+            <div class="course-item">
+                <div class="course-title">CS 101: Introduction to Computer Science</div>
+                <div class="course-period">Fall 2023<span class="note-symbol">⁂</span></div>
+                <p>Course description goes here. With [Professor Name].</p>
+                <div class="course-details">
+                    <p><em>Key contributions:</em></p>
+                    <ul>
+                        <li>Interviewed, hired, and trained a staff of X teaching assistants</li>
+                        <li>Developed new course material for X, Y, and Z topics</li>
+                        <li>Led weekly review sessions and office hours</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="course-item">
+                <div class="course-title">CS 202: Data Structures and Algorithms</div>
+                <div class="course-period">Spring 2023<span class="note-symbol">⁂</span>, Fall 2022</div>
+                <p>Analysis of algorithms and implementation of fundamental data structures. With [Professor Name].</p>
+                <div class="course-details">
+                    <p><em>Key contributions:</em></p>
+                    <ul>
+                        <li>Created and graded assignments focused on algorithm analysis</li>
+                        <li>Designed and implemented autograder system for programming assignments</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; <span id="year">2023</span> Sudharshan Balaji</p>
+            <div class="footer-links">
+                <a href="mailto:sudharshanbalaji@usf.edu" class="contact-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>Email</span>
+                </a>
+                <a href="https://github.com/bsudharshan2001" class="contact-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/sudharshanbalaji" class="contact-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Update copyright year automatically
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html> 
