@@ -42,6 +42,10 @@
             text-decoration: underline;
         }
         
+        p {
+            margin-bottom: 1rem;
+        }
+        
         /* Styled inline link */
         .inline-link {
             color: var(--accent-blue);
@@ -141,6 +145,25 @@
             transform: translateX(-50%);
         }
         
+        .section-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-family: Georgia, serif;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-subtitle::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-blue);
+        }
+        
         .experience, .teaching-item {
             margin-bottom: 2rem;
             padding-bottom: 1rem;
@@ -151,15 +174,60 @@
             border-bottom: none;
         }
         
-        .experience-title, .teaching-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            font-family: Georgia, serif;
+        .experience-item {
+            padding-left: 20px;
+            border-left: 4px solid var(--accent-green);
+            margin-bottom: 2rem;
         }
         
-        .experience-period, .teaching-period {
+        .experience-item.academic {
+            border-left: 4px solid var(--accent-blue);
+        }
+        
+        .experience-item ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 0.75rem;
+        }
+        
+        .experience-item li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        
+        .experience-item li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent-green);
+        }
+        
+        .experience-item.academic li::before {
+            background-color: var(--accent-blue);
+        }
+        
+        .experience-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .experience-period {
             font-style: italic;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #555;
+            display: inline-block;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
         
         .teaching-divider {
@@ -264,6 +332,72 @@
                 gap: 1rem;
             }
         }
+        
+        .semester-block {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-left: 15px;
+            border-left: 2px solid rgba(59, 130, 246, 0.3);
+            position: relative;
+        }
+        
+        .semester-block::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+        }
+        
+        .semester-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 0.95rem;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+        
+        .course {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .course:hover {
+            background-color: rgba(62, 145, 255, 0.03);
+        }
+        
+        .course:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .course-name {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--accent-purple);
+        }
+        
+        .key-contributions {
+            margin-top: 1rem;
+        }
+        
+        .contributions-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 0.75rem;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
     </style>
 </head>
 <body>
@@ -286,65 +420,62 @@
     </div>
 
     <div class="container">
+        
         <section id="experience">
             <h2 class="section-title">Experience</h2>
             
-            <div class="experience">
-                <div class="experience-title">Your Position</div>
-                <div class="experience-period">Organization/Company, Time Period</div>
-                <p>Description of what you did in this role, your responsibilities, achievements, and the skills you developed or applied.</p>
-                <ul>
-                    <li>Key responsibility or achievement</li>
-                    <li>Another key responsibility or achievement</li>
-                    <li>Yet another key responsibility or achievement</li>
-                </ul>
-            </div>
+            <h3 class="section-subtitle">Industry Experience</h3>
             
-            <div class="experience">
-                <div class="experience-title">Previous Position</div>
-                <div class="experience-period">Previous Organization, Time Period</div>
-                <p>Description of what you did in this role, your responsibilities, achievements, and the skills you developed or applied.</p>
-                <ul>
-                    <li>Key responsibility or achievement</li>
-                    <li>Another key responsibility or achievement</li>
-                    <li>Yet another key responsibility or achievement</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section id="teaching">
-            <h2 class="section-title">Teaching</h2>
-            
-            <div class="authors-note">
-                I served as a teaching assistant every semester I was at [Your Institution], sometimes even during semesters I wasn't enrolled. <span class="note-symbol">⁂</span> denotes a Head Teaching Assistant role.
-            </div>
-            
-            <hr class="teaching-divider">
-            
-            <div class="course-item">
-                <div class="course-title">CS 101: Introduction to Computer Science</div>
-                <div class="course-period">Fall 2023<span class="note-symbol">⁂</span></div>
-                <p>Course description goes here. With [Professor Name].</p>
-                <div class="course-details">
-                    <p><em>Key contributions:</em></p>
+            <div class="experience-item">
+                <div class="experience-title">Machine Learning Engineering Intern – dotkonnekt Innovation Labs, Bangalore</div>
+                <div class="experience-period">March 2023 – July 2023</div>
+                <p>Contributed to a cross-functional team developing machine learning models and algorithms for the company's D2C Experiential Platform.</p>
+                
+                <div class="key-contributions">
+                    <h4 class="contributions-title">Key Contributions</h4>
                     <ul>
-                        <li>Interviewed, hired, and trained a staff of X teaching assistants</li>
-                        <li>Developed new course material for X, Y, and Z topics</li>
-                        <li>Led weekly review sessions and office hours</li>
+                        <li>Implemented a cutting-edge recommender engine, encompassing content-based filtering systems, collaborative filtering systems, and hybrid recommenders, for the company's D2C platform.</li>
+                        <li>Integrated Huggingface models with LangChain, including open-source language models such as BERT and Falcon-40B, into the company's platform, contributing significantly to the platform's language processing capabilities.</li>
+                        <li>Leveraged AWS SageMaker for model training, proficiently experimenting with various instance types to optimize model performance.</li>
+                        <li>Deployed models using Node.js and Flask, ensuring seamless integration with existing infrastructure and an improved user experience.</li>
                     </ul>
                 </div>
             </div>
             
-            <div class="course-item">
-                <div class="course-title">CS 202: Data Structures and Algorithms</div>
-                <div class="course-period">Spring 2023<span class="note-symbol">⁂</span>, Fall 2022</div>
-                <p>Analysis of algorithms and implementation of fundamental data structures. With [Professor Name].</p>
-                <div class="course-details">
-                    <p><em>Key contributions:</em></p>
-                    <ul>
-                        <li>Created and graded assignments focused on algorithm analysis</li>
-                        <li>Designed and implemented autograder system for programming assignments</li>
-                    </ul>
+            <h3 class="section-subtitle">Academic Experience</h3>
+            
+            <div class="experience-item academic">
+                <div class="experience-title">Graduate Instructional Assistant – University of South Florida, Tampa, FL, USA</div>
+                <div class="experience-period">September 2024 – May 2025</div>
+                <p>Conducted thesis research on security applications of large language models titled "LLMs for Network Intrusion Detection: A Comprehensive Analysis" working with Graduate Advisor Prof. Ning Wang to comprehensively analyze methodologies.</p>
+                
+                <div class="semester-block">
+                    <h4 class="semester-title">Fall 2024</h4>
+                    <div class="course">
+                        <div class="course-name">"Security and Privacy in ML" with Prof. Guangjing Wang</div>
+                        <ul>
+                            <li>Supported instruction and grading, assisting students with questions during office hours</li>
+                            <li>Helped ensure clarity in assessments for a class of approximately 100 students</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="semester-block">
+                    <h4 class="semester-title">Spring 2025</h4>
+                    <div class="course">
+                        <div class="course-name">"Privacy Preserving Trustworthy Cyber-Infrastructures" with Prof. Attila Yavuz</div>
+                        <ul>
+                            <li>Currently building coursework and supporting instruction</li>
+                            <li>Assisting with grading and student support</li>
+                        </ul>
+                    </div>
+                    <div class="course">
+                        <div class="course-name">"Human Aspects of Cybersecurity" with Graduate Advisor Prof. Ning Wang</div>
+                        <ul>
+                            <li>Building course materials and supporting classroom instruction</li>
+                            <li>Providing grading support and student assistance</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
