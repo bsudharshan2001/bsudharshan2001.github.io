@@ -73,7 +73,7 @@
         
         .nav-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0.75rem 1rem;
             max-width: var(--max-width);
@@ -148,12 +148,16 @@
         
         .header-intro {
             max-width: 600px;
+            margin-right: 3rem;
+            border-right: 1px solid rgba(255,255,255,0.2);
+            padding-right: 3rem;
         }
         
         .header-links {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            min-width: 220px;
         }
         
         .header-links a {
@@ -199,6 +203,7 @@
             font-size: 0.8rem;
             margin-top: 1rem;
             opacity: 0.7;
+            white-space: nowrap;
         }
         
         /* Contact link styling */
@@ -397,17 +402,58 @@
                 gap: 1rem;
             }
         }
+        
+        /* News section styles */
+        .news-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .news-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-date {
+            font-family: 'Lato', sans-serif;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+        
+        .news-content {
+            line-height: 1.5;
+        }
+        
+        @media (min-width: 768px) {
+            .news-item {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .news-date {
+                min-width: 140px;
+                margin-right: 1.5rem;
+                margin-bottom: 0;
+            }
+            
+            .news-content {
+                flex: 1;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <div class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html" style="color: inherit; text-decoration: none;">
-                    <span>Y</span><span>o</span><span>u</span><span>r</span><span>Name</span>
-                </a>
-            </div>
             <div class="nav-links">
                 <a href="index.html" class="active">About</a>
                 <a href="experience.html">Experience</a>
@@ -448,7 +494,7 @@
                         <span>Scholar</span>
                     </a>
                     <div class="commit-info">
-                        Last updated with commit <a href="https://github.com/bsudharshan2001/bsudharshan2001.github.io/commits/main/" style="color: inherit; text-decoration: underline;">#3612540</a>
+                        Last updated with commit <a href="https://github.com/bsudharshan2001/bsudharshan2001.github.io/commits/main/" style="color: inherit; text-decoration: underline;">@3612540</a>
                     </div>
                 </div>
             </div>
@@ -469,7 +515,57 @@
             <p>Outside of work, I enjoy [Your Hobbies/Interests].</p>
         </section>
         
-        
+        <section id="news">
+            <h2 class="section-title">Latest News</h2>
+            <ul class="news-list">
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[May 1, 2025]</span></div>
+                    <div class="news-content">Our position paper on Downscaling LLMs, accepted in <span class="highlighted purple">ICML'25</span>.</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[May 1, 2025]</span></div>
+                    <div class="news-content">Our paper on MenstLLaMA: A Specialized LLM for Menstrual Health Education, accepted in the <span class="highlighted purple">JMIR</span> journal.</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[April 29, 2025]</span></div>
+                    <div class="news-content">Our paper on roles on GenAI in suicide prevention in India, accepted in <span class="highlighted purple">JCAI'25</span>.</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[Mar 21, 2025]</span></div>
+                    <div class="news-content">I received the AFMR Grant from Microsoft. Thanks Microsoft!</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[Jan 30, 2025]</span></div>
+                    <div class="news-content">I was invited to <span class="highlighted green">DD India Primetime</span> to discuss India's initiative to launch own LLMs.</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[Jan 23, 2025]</span></div>
+                    <div class="news-content">Two papers (counterspeech and LLM handling long context), accepted in <span class="highlighted purple">NAACL'25</span> (main).</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[Jan 23, 2025]</span></div>
+                    <div class="news-content">Our paper on model pruning, accepted in <span class="highlighted purple">ICLR'25</span>.</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[Jan 17, 2025]</span></div>
+                    <div class="news-content">I received the Adobe Faculty Award. Thanks Adobe!</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[Jan 14, 2025]</span></div>
+                    <div class="news-content">Our paper on the Role of GenAI in Suicide Prevention in India, accepted in <span class="highlighted purple">Nature Machine Intelligence</span>.</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[Dec 25, 2024]</span></div>
+                    <div class="news-content">I was featured on <span class="highlighted green">DD URDU</span>, discussing how AI will reshape global economy (<a href="#" class="inline-link">Promo</a>).</div>
+                </li>
+                <li class="news-item">
+                    <div class="news-date"><span class="highlighted blue">[Dec 10, 2024]</span></div>
+                    <div class="news-content">Appointed as an Action Editor of Computational Linguistics and Neural Networks journals.</div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
     <footer>
         <p>&copy; <span id="year">2023</span> Sudharshan Balaji</p>
         <div class="footer-links">
@@ -499,7 +595,7 @@
                 const commitHash = data.sha.substring(0, 7); // Get first 7 characters of commit hash
                 const commitLink = document.querySelector('.commit-info a');
                 if (commitLink) {
-                    commitLink.textContent = '#' + commitHash;
+                    commitLink.textContent = '@' + commitHash;
                 }
             })
             .catch(error => console.error('Error fetching latest commit:', error));
