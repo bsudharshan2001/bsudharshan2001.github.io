@@ -129,6 +129,20 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            position: relative;
+        }
+        
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-blue);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            left: -180px;
+            top: 50%;
+            transform: translateY(-50%);
         }
         
         .logo-container {
@@ -153,10 +167,10 @@
         .logo span:nth-child(10) { color: var(--accent-blue); }
         
         .header-intro {
-            max-width: 600px;
-            margin-right: 3rem;
+            flex: 1;
+            margin-right: 2rem;
             border-right: 1px solid rgba(255,255,255,0.2);
-            padding-right: 3rem;
+            padding-right: 2rem;
         }
         
         .header-links {
@@ -387,10 +401,23 @@
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .profile-photo {
+                margin-bottom: 1.5rem;
+            }
+            
+            .header-intro {
+                border-right: none;
+                padding-right: 0;
+                margin-right: 0;
             }
             
             .header-links {
                 margin-top: 2rem;
+                align-items: center;
             }
             
             .nav-container {
@@ -473,6 +500,7 @@
     <div class="header-container">
         <div class="container">
             <div class="header-content">
+                <img src="assets/img/Sudharshan Balaji - Photo.jpeg" alt="Sudharshan Balaji" class="profile-photo">
                 <div class="header-intro">
                     <div class="logo-container">
                         <div class="logo">

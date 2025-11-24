@@ -332,16 +332,36 @@
                 <div class="publication-authors">Balaji, Sudharshan</div>
                 <div class="publication-venue">University of South Florida ProQuest Dissertations & Theses, 2025. 31844777.</div>
                 <div class="abstract">
-                    <p id="abstract-preview">Network Intrusion Detection Systems (NIDS) play a critical role in identifying and mitigating malicious activities within computer networks. With the rapid evolution of natural language processing (NLP), Large Language Models (LLMs) have emerged as transformative tools across various domains. LLMs, such as OpenAI's GPT series and Meta's LLaMA models, have demonstrated remarkable performance in tasks like language generation, reasoning, and classification...</p>
-                    <div id="abstract-full" style="display:none;">
+                    <p class="abstract-preview">Network Intrusion Detection Systems (NIDS) play a critical role in identifying and mitigating malicious activities within computer networks. With the rapid evolution of natural language processing (NLP), Large Language Models (LLMs) have emerged as transformative tools across various domains. LLMs, such as OpenAI's GPT series and Meta's LLaMA models, have demonstrated remarkable performance in tasks like language generation, reasoning, and classification...</p>
+                    <div class="abstract-full" style="display:none;">
                         <p>Network Intrusion Detection Systems (NIDS) play a critical role in identifying and mitigating malicious activities within computer networks. With the rapid evolution of natural language processing (NLP), Large Language Models (LLMs) have emerged as transformative tools across various domains. LLMs, such as OpenAI's GPT series and Meta's LLaMA models, have demonstrated remarkable performance in tasks like language generation, reasoning, and classification. Their ability to understand and process vast amounts of data has enabled groundbreaking advancements in areas like healthcare, finance, and cybersecurity. Recent trends highlight their potential to handle unstructured data, perform complex reasoning, and adapt to a wide range of applications, making them a promising technology for enhancing NIDS.</p>
                         <p>This thesis explores the application of advanced NLP techniques, particularly LLMs, to enhance NIDS performance. We investigate multiple approaches, including the use of Masked Language Models (MLMs) such as BERT, RoBERTa, and DistilBERT, as well as large-scale generative models like Gemma (2B, 9B, and 27B parameter versions) for intrusion detection tasks.</p>
                         <p>Our study begins by implementing standard machine learning models - k-Nearest Neighbors (kNN), Random Forest, XGBoost, Support Vector Machines (SVM), and Logistic Regression -on two benchmark datasets: NSL-KDD and CICIoT2023. These models establish a performance baseline for NIDS tasks. Subsequently, we apply MLMs to classify network traffic, both as standalone classifiers and as feature extractors, by converting the datasets into dense embeddings and using them with standard models. To further analyze the efficacy of LLMs, we conduct experiments by prompting Gemma models with sampled datasets of varying sizes (1000, 5000, 10,000 rows). The experiments encompass different prompting strategies, including Zero-Shot, One-Shot, In-Context Learning, In-Context Learning with Coverage-Based selection algorithm, and Chain-of-Thought reasoning. Each experiment is conducted with two variants: one using selected features and another using the entire feature set. Our analysis focuses on how model size, data representation, and prompting methods impact classification performance.</p>
                     </div>
-                    <button id="abstract-toggle" class="abstract-toggle">Read more</button>
+                    <button class="abstract-toggle">Read more</button>
                 </div>
                 <div class="publication-links">
                     <a href="#">Thesis</a>
+                </div>
+            </div>
+            
+            <div class="publication">
+                <div class="pub-number">2</div>
+                <div class="publication-title">AI-Augmented Interpretation of Coronary CT Angiography Reports: A Large Language Model-Based Framework</div>
+                <div class="publication-authors">Zhiyu Liu, Mathew Karivelil, Adam Fennell, Joslyn Schipper, <strong>Sudharshan Balaji</strong>, Ning Wang, Shone Almeida</div>
+                <div class="publication-venue">American Heart Association's 2025 Scientific Sessions and the American Heart Association's 2025 Resuscitation Science Symposium</div>
+                <div class="abstract">
+                    <p class="abstract-preview"><strong>Introduction:</strong> Coronary CT angiography (CCTA) is a valuable clinical tool for evaluation of coronary artery disease. However, the standardized framework, Coronary Artery Disease Reporting and Data System (CAD-RADS), is not consistently applied to classify CCTA reports due to variability in terminology and narrative format. We address the gap by developing an artificial intelligence-based system leveraging large language models (LLM) to automate the interpretation of CCTA reports...</p>
+                    <div class="abstract-full" style="display:none;">
+                        <p><strong>Introduction:</strong> Coronary CT angiography (CCTA) is a valuable clinical tool for evaluation of coronary artery disease. However, the standardized framework, Coronary Artery Disease Reporting and Data System (CAD-RADS), is not consistently applied to classify CCTA reports due to variability in terminology and narrative format. We address the gap by developing an artificial intelligence-based system leveraging large language models (LLM) to automate the interpretation of CCTA reports and support guideline-directed clinical decision-making.</p>
+                        <p><strong>Methods:</strong> CCTA reports from native coronary artery evaluation protocols were selected. The training dataset (940 reports) was established from CCTA reports selected from a clinical database at our institution between January 2020 and July 2024. The dataset exhibits a natural class imbalance based on clinical indications of CCTA. Four LLMs previously validated for medical applications were evaluated. BioBERT demonstrated the highest performance and was therefore selected for model deployment. External validation was further conducted using an independent test set (500 reports) comprising CCTA reports between August 2024 and April 2025 at our institution. Concordance between radiologist-interpreted and AI-generated CAD-RADS classification was assessed. All data handling adhered to HIPAA regulations.</p>
+                        <p><strong>Results:</strong> The distribution of CAD-RADS classifications in the training dataset was as follows: CAD-RADS 0 (35.9%), CAD-RADS 1 (14.9%), CAD-RADS 2 (14.2%), CAD-RADS 3 (7.9%), CAD-RADS 4 (7.7%), CAD-RADS 5 (0.7%), and CAD-RADS N (18.7%). The overall accuracy of AI-interpreted CAD-RADS classification was 87.6% (438/500). The distribution of CAD-RADS classifications in the testing dataset was as follows: CAD-RADS 0 (35.2%), CAD-RADS 1 (19.2%), CAD-RADS 2 (13.6%), CAD-RADS 3 (8.6%), CAD-RADS 4 (8.2%), CAD-RADS 5 (2.0%), and CAD-RADS N (13.2%). The class-wise accuracy of the AI model on the testing dataset for CAD-RADS classification was as follows: CAD-RADS 0 (96.0%), CAD-RADS 1 (96.9%), CAD-RADS 2 (98.5%), CAD-RADS 3 (97.7%), CAD-RADS 4 (85.3%), CAD-RADS 5 (10.0%), and CAD-RADS N (48.9%).</p>
+                        <p><strong>Conclusion:</strong> We propose an artificial intelligence tool powered by the BioBERT LLM to enhance the interpretation of CCTA reports. This approach aims to address the existing discrepancies and heterogeneity in CCTA reporting systems. Further effort is needed to optimize the tool in supporting clinical decision-making among internal medicine and cardiology providers.</p>
+                    </div>
+                    <button class="abstract-toggle">Read more</button>
+                </div>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.1161/circ.152.suppl_3.4359588" target="_blank">DOI</a>
                 </div>
             </div>
         </section>
@@ -369,19 +389,22 @@
         // Update copyright year automatically
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Toggle abstract visibility
-        document.getElementById('abstract-toggle').addEventListener('click', function() {
-            const preview = document.getElementById('abstract-preview');
-            const full = document.getElementById('abstract-full');
-            if (full.style.display === 'none') {
-                full.style.display = 'block';
-                preview.style.display = 'none';
-                this.textContent = 'Read less';
-            } else {
-                full.style.display = 'none';
-                preview.style.display = 'block';
-                this.textContent = 'Read more';
-            }
+        // Toggle abstract visibility for all publications
+        document.querySelectorAll('.abstract-toggle').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const abstract = this.closest('.abstract');
+                const preview = abstract.querySelector('.abstract-preview');
+                const full = abstract.querySelector('.abstract-full');
+                if (full.style.display === 'none') {
+                    full.style.display = 'block';
+                    preview.style.display = 'none';
+                    this.textContent = 'Read less';
+                } else {
+                    full.style.display = 'none';
+                    preview.style.display = 'block';
+                    this.textContent = 'Read more';
+                }
+            });
         });
     </script>
 </body>
