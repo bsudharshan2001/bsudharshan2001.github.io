@@ -4,386 +4,469 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Sudharshan Balaji</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-bg: #1a2030;
-            --light-bg: #fff;
-            --text-color: #333;
-            --text-light: #f0f0f0;
-            --accent-blue: #3e91ff;
-            --accent-red: #ff5252;
-            --accent-purple: #bb6bd9;
-            --accent-green: #4cd964;
-            --accent-yellow: #ffcc00;
-            --max-width: 800px;
-            --border-color: #e0e0e0;
+            --bg: #faf8f5;
+            --bg-alt: #f5f2ed;
+            --text: #2c2c2c;
+            --text-muted: #6b6b6b;
+            --accent: #c4704b;
+            --accent-hover: #a85a38;
+            --border: #e8e4de;
+            --selection: #c4704b22;
         }
-        
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --bg-alt: #242424;
+            --text: #e8e4de;
+            --text-muted: #9a9a9a;
+            --accent: #e8956a;
+            --accent-hover: #f0a77d;
+            --border: #333333;
+            --selection: #e8956a33;
+        }
+
+        html { color-scheme: light; }
+        [data-theme="dark"] { color-scheme: dark; }
+
+        ::selection {
+            background: var(--selection);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
-            margin: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        
-        a {
-            text-decoration: none;
+
+        body.theme-transitioning,
+        body.theme-transitioning * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
         }
-        
-        a:hover {
-            text-decoration: underline;
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+            min-height: 100vh;
+            position: relative;
         }
-        
-        /* Styled inline link */
-        .inline-link {
-            color: var(--accent-blue);
-            font-weight: 600;
-            padding-bottom: 1px;
-            border-bottom: 1px solid rgba(62, 145, 255, 0.3);
-            transition: border-color 0.2s ease;
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 1000;
         }
-        
-        .inline-link:hover {
-            text-decoration: none;
-            border-bottom: 1px solid var(--accent-blue);
-        }
-        
-        .container {
-            max-width: var(--max-width);
+
+        .layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            min-height: 100vh;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 2rem;
         }
-        
-        /* Navigation styles */
-        .navbar {
-            background-color: var(--dark-bg);
+
+        .sidebar {
+            padding: 4rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .nav-container {
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            max-width: var(--max-width);
-            margin: 0 auto;
+            flex-direction: column;
         }
-        
-        .nav-logo {
-            font-weight: bold;
-            color: var(--text-light);
-            font-size: 1.2rem;
-        }
-        
-        .nav-logo span:nth-child(1) { color: var(--accent-blue); }
-        .nav-logo span:nth-child(2) { color: var(--accent-green); }
-        .nav-logo span:nth-child(3) { color: var(--accent-purple); }
-        .nav-logo span:nth-child(4) { color: var(--accent-yellow); }
-        .nav-logo span:nth-child(5) { color: var(--accent-red); }
-        .nav-logo span:nth-child(6) { color: var(--accent-blue); }
-        .nav-logo span:nth-child(7) { color: var(--accent-green); }
-        .nav-logo span:nth-child(8) { color: var(--accent-purple); }
-        .nav-logo span:nth-child(9) { color: var(--accent-yellow); }
-        .nav-logo span:nth-child(10) { color: var(--accent-red); }
-        
+
         .nav-links {
-            display: flex;
-            gap: 1.5rem;
+            list-style: none;
+            margin-bottom: auto;
         }
-        
+
+        .nav-links li {
+            margin-bottom: 0.25rem;
+        }
+
         .nav-links a {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent-blue);
+            color: var(--text-muted);
             text-decoration: none;
-        }
-        
-        .nav-links a.active {
-            color: var(--accent-blue);
-            font-weight: bold;
-        }
-        
-        section {
-            margin-bottom: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
-            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            display: inline-block;
             position: relative;
-            font-family: Georgia, serif;
         }
-        
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 1px;
-            background-color: var(--border-color);
+
+        .nav-links a::before {
+            content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
         }
-        
-        .experience {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
         }
-        
-        .experience:last-child {
+
+        .nav-links a.active::before {
+            opacity: 1;
+        }
+
+        .main {
+            padding: 4rem 0 6rem 4rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+
+        a.link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        a.link:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* Project items */
+        .project-item {
+            margin-bottom: 2.5rem;
+            max-width: 560px;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-item:last-child {
             border-bottom: none;
         }
-        
-        .experience-title {
-            font-weight: bold;
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 500;
             margin-bottom: 0.5rem;
-            font-family: Georgia, serif;
-        }
-        
-        .experience-period {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-        
-        .blue { color: var(--accent-blue); }
-        
-        /* Contact link styling */
-        .contact-link {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--text-light);
+            gap: 0.75rem;
+        }
+
+        .project-title a {
+            color: var(--text);
+            text-decoration: none;
             transition: color 0.2s ease;
         }
-        
-        .contact-link svg {
-            color: var(--accent-blue);
+
+        .project-title a:hover {
+            color: var(--accent);
         }
-        
-        .contact-link:hover {
-            color: var(--accent-blue);
-            text-decoration: none;
+
+        .project-arrow {
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
-        
-        footer {
-            margin-top: 3rem;
-            padding: 2rem 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
+
+        .project-item:hover .project-arrow {
+            opacity: 1;
+            transform: translateX(3px);
         }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
+
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 0.75rem;
         }
-        
-        .footer-links a {
-            color: var(--text-color);
-        }
-        
-        /* Contact link styles for different sections */
-        footer .contact-link {
-            color: var(--text-color);
-        }
-        
-        footer .contact-link:hover {
-            color: var(--accent-blue);
-        }
-        
-        /* Project specific styles */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background-color: #f5f5f5;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            font-family: Georgia, serif;
-        }
-        
+
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin: 0.5rem 0 1rem;
         }
-        
+
         .tech-tag {
-            background-color: #f0f0f0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
             padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            color: #555;
+            background: var(--bg-alt);
+            border-radius: 3px;
         }
-        
+
+        /* Empty state */
+        .coming-soon {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 100;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.35rem 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .theme-toggle svg { width: 14px; height: 14px; }
+        .theme-toggle .sun-icon { display: none; }
+        .theme-toggle .moon-icon { display: block; }
+        [data-theme="dark"] .theme-toggle .sun-icon { display: block; }
+        [data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                padding: 0.5rem;
+            html {
+                font-size: 16px;
             }
-            
-            .nav-logo {
-                margin-bottom: 0.5rem;
+
+            .layout {
+                display: block;
+                padding: 0 1.5rem;
             }
-            
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                padding: 2rem 0 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
             .nav-links {
+                display: flex;
                 flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
+                gap: 0.5rem 1.25rem;
             }
-            
-            .project-grid {
-                grid-template-columns: 1fr;
+
+            .nav-links li {
+                margin-bottom: 0;
+            }
+
+            .nav-links a::before {
+                display: none;
+            }
+
+            .main {
+                padding: 2rem 0 6rem;
+                border-left: none;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .project-arrow {
+                opacity: 1;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html" style="color: inherit; text-decoration: none;">
-                    <span>S</span><span>u</span><span>d</span><span>h</span><span>a</span><span>r</span><span>s</span><span>h</span><span>a</span><span>n</span>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">About</a>
-                <a href="experience.html">Experience</a>
-                <a href="publications.html">Publications</a>
-                <a href="projects.html" class="active">Projects</a>
-                <a href="blog.html">Blog</a>
-            </div>
-        </div>
+    <div class="layout">
+        <nav class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="blog.html">Writing</a></li>
+            </ul>
+        </nav>
+
+        <main class="main">
+            <h1 class="page-title">Projects</h1>
+            <p class="page-note">Things I've built or contributed to.</p>
+
+            <article class="project-item">
+                <h2 class="project-title">
+                    <a href="https://github.com/bsudharshan2001" target="_blank">LLM-based Network Intrusion Detection</a>
+                    <span class="project-arrow">&rarr;</span>
+                </h2>
+                <p class="project-description">
+                    Comprehensive analysis of using Large Language Models for network intrusion detection.
+                    Explored BERT, RoBERTa, DistilBERT as classifiers and feature extractors,
+                    and Gemma models with various prompting strategies on NSL-KDD and CICIoT2023 datasets.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">Huggingface</span>
+                    <span class="tech-tag">LLMs</span>
+                </div>
+            </article>
+
+            <article class="project-item">
+                <h2 class="project-title">
+                    <a href="#">Medical AI Report Interpreter</a>
+                    <span class="project-arrow">&rarr;</span>
+                </h2>
+                <p class="project-description">
+                    AI system using BioBERT to automate interpretation of Coronary CT Angiography reports
+                    with CAD-RADS classification. Achieved 87.6% accuracy on external validation.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">BioBERT</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Medical NLP</span>
+                </div>
+            </article>
+
+            <article class="project-item">
+                <h2 class="project-title">
+                    <a href="#">D2C Recommender System</a>
+                    <span class="project-arrow">&rarr;</span>
+                </h2>
+                <p class="project-description">
+                    Production recommender engine combining content-based, collaborative filtering,
+                    and hybrid approaches for a D2C experiential platform.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">AWS SageMaker</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">Node.js</span>
+                </div>
+            </article>
+
+            <p class="coming-soon">More projects coming soon...</p>
+        </main>
     </div>
 
-    <div class="container">
-        <section id="projects">
-            <h2 class="section-title">Projects</h2>
-            
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-img"></div>
-                    <div class="project-content">
-                        <div class="project-title">Project Name</div>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                        </div>
-                        <p>Description of the project, its purpose, and your contribution.</p>
-                        <p><a href="#" class="blue">Project Link</a></p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img"></div>
-                    <div class="project-content">
-                        <div class="project-title">Another Project</div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Computer Vision</span>
-                        </div>
-                        <p>Description of the project, its purpose, and your contribution.</p>
-                        <p><a href="#" class="blue">Project Link</a></p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img"></div>
-                    <div class="project-content">
-                        <div class="project-title">Third Project</div>
-                        <div class="project-tech">
-                            <span class="tech-tag">C++</span>
-                            <span class="tech-tag">OpenGL</span>
-                            <span class="tech-tag">Graphics</span>
-                        </div>
-                        <p>Description of the project, its purpose, and your contribution.</p>
-                        <p><a href="#" class="blue">Project Link</a></p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="experience" style="margin-top: 3rem;">
-                <div class="experience-title">Other Notable Projects</div>
-                <div class="experience-period">Technologies Used</div>
-                <p>Description of the project, its purpose, and your contribution.</p>
-                <p><a href="#" class="blue">Project Link</a></p>
-            </div>
-        </section>
-        
-        <footer>
-            <p>&copy; <span id="year">2023</span> Sudharshan Balaji</p>
+    <footer class="footer-nav">
+        <div class="footer-inner">
             <div class="footer-links">
-                <a href="mailto:sudharshanbalaji@usf.edu" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span>Email</span>
-                </a>
-                <a href="https://github.com/bsudharshan2001" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://linkedin.com/in/sudharshanbalaji" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    <span>LinkedIn</span>
-                </a>
+                <a href="mailto:sudharshanbalaji@usf.edu">Email</a>
+                <a href="https://github.com/bsudharshan2001" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/sudharshanbalaji" target="_blank">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=z-TM7EYAAAAJ&hl=en" target="_blank">Scholar</a>
             </div>
-        </footer>
-    </div>
-    
+            <div class="footer-right">
+                <span class="footer-note">Tampa, FL</span>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
     <script>
-        // Update copyright year automatically
-        document.getElementById('year').textContent = new Date().getFullYear();
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme) { html.setAttribute('data-theme', savedTheme); }
+            else if (systemPrefersDark) { html.setAttribute('data-theme', 'dark'); }
+            toggle.addEventListener('click', () => {
+                document.body.classList.add('theme-transitioning');
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                if (newTheme === 'dark') { html.setAttribute('data-theme', 'dark'); }
+                else { html.removeAttribute('data-theme'); }
+                localStorage.setItem('theme', newTheme);
+                setTimeout(() => { document.body.classList.remove('theme-transitioning'); }, 300);
+            });
+        })();
     </script>
 </body>
-</html> 
+</html>

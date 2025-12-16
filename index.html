@@ -6,619 +6,530 @@
     <title>Sudharshan Balaji</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-bg: #1a2030;
-            --light-bg: #fff;
-            --text-color: #333;
-            --text-light: #f0f0f0;
-            --accent-blue: #3e91ff;
-            --accent-red: #ff5252;
-            --accent-purple: #bb6bd9;
-            --accent-green: #4cd964;
-            --accent-yellow: #ffcc00;
-            --max-width: 800px;
-            --border-color: #e0e0e0;
+            --bg: #faf8f5;
+            --bg-alt: #f5f2ed;
+            --text: #2c2c2c;
+            --text-muted: #6b6b6b;
+            --accent: #c4704b;
+            --accent-hover: #a85a38;
+            --border: #e8e4de;
+            --selection: #c4704b22;
         }
-        
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --bg-alt: #242424;
+            --text: #e8e4de;
+            --text-muted: #9a9a9a;
+            --accent: #e8956a;
+            --accent-hover: #f0a77d;
+            --border: #333333;
+            --selection: #e8956a33;
+        }
+
+        html {
+            color-scheme: light;
+        }
+
+        [data-theme="dark"] {
+            color-scheme: dark;
+        }
+
+        ::selection {
+            background: var(--selection);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
-            margin: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        
-        a {
-            text-decoration: none;
+
+        body.theme-transitioning,
+        body.theme-transitioning * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
         }
-        
-        a:hover {
-            text-decoration: underline;
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+            min-height: 100vh;
+            position: relative;
         }
-        
-        /* Styled inline link */
-        .inline-link {
-            color: var(--accent-blue);
-            font-weight: 600;
-            padding-bottom: 1px;
-            border-bottom: 1px solid rgba(62, 145, 255, 0.3);
-            transition: border-color 0.2s ease;
+
+        /* Subtle grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 1000;
         }
-        
-        .inline-link:hover {
-            text-decoration: none;
-            border-bottom: 1px solid var(--accent-blue);
-        }
-        
-        .container {
-            max-width: var(--max-width);
+
+        .layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            min-height: 100vh;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 2rem;
         }
-        
-        /* Navigation styles */
-        .navbar {
-            background-color: var(--dark-bg);
+
+        /* Sidebar Navigation */
+        .sidebar {
+            padding: 4rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .nav-container {
+            height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            max-width: var(--max-width);
-            margin: 0 auto;
+            flex-direction: column;
         }
-        
-        .nav-logo {
-            font-weight: bold;
-            color: var(--text-light);
-            font-size: 1.2rem;
-        }
-        
-        .nav-logo span:nth-child(1) { color: var(--accent-blue); }
-        .nav-logo span:nth-child(2) { color: var(--accent-green); }
-        .nav-logo span:nth-child(3) { color: var(--accent-purple); }
-        .nav-logo span:nth-child(4) { color: var(--accent-yellow); }
-        .nav-logo span:nth-child(5) { color: var(--accent-red); }
-        
+
         .nav-links {
-            display: flex;
-            gap: 1.5rem;
+            list-style: none;
+            margin-bottom: auto;
         }
-        
+
+        .nav-links li {
+            margin-bottom: 0.25rem;
+        }
+
         .nav-links a {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent-blue);
+            color: var(--text-muted);
             text-decoration: none;
-        }
-        
-        .nav-links a.active {
-            color: var(--accent-blue);
-            font-weight: bold;
-        }
-        
-        /* Header styles */
-        .header-container {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            padding: 3rem 0;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            display: inline-block;
             position: relative;
         }
-        
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-blue);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+        .nav-links a::before {
+            content: '';
             position: absolute;
-            left: -180px;
+            left: -1rem;
             top: 50%;
             transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
         }
-        
-        .logo-container {
-            margin-bottom: 1.5rem;
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
         }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
+
+        .nav-links a.active::before {
+            opacity: 1;
         }
-        
-        .logo span:nth-child(1) { color: var(--accent-blue); }
-        .logo span:nth-child(2) { color: var(--accent-green); }
-        .logo span:nth-child(3) { color: var(--accent-purple); }
-        .logo span:nth-child(4) { color: var(--accent-yellow); }
-        .logo span:nth-child(5) { color: var(--accent-blue); }
-        .logo span:nth-child(6) { color: var(--accent-red); }
-        .logo span:nth-child(7) { color: var(--accent-green); }
-        .logo span:nth-child(8) { color: var(--accent-purple); }
-        .logo span:nth-child(9) { color: var(--accent-yellow); }
-        .logo span:nth-child(10) { color: var(--accent-blue); }
-        
-        .header-intro {
-            flex: 1;
-            margin-right: 2rem;
-            border-right: 1px solid rgba(255,255,255,0.2);
-            padding-right: 2rem;
+
+        /* Main Content */
+        .main {
+            padding: 4rem 0 6rem 4rem;
+            border-left: 1px solid var(--border);
         }
-        
-        .header-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            min-width: 220px;
+
+        .name {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
         }
-        
-        .header-links a {
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .header-links a i {
-            width: 20px;
-            text-align: center;
-        }
-        
-        .highlighted {
-            font-weight: bold;
-        }
-        
-        .blue { color: var(--accent-blue); }
-        .red { color: var(--accent-red); }
-        .purple { color: var(--accent-purple); }
-        .green { color: var(--accent-green); }
-        .yellow { color: var(--accent-yellow); }
-        
-        .hand-wave {
-            display: inline-block;
-            animation: wave 2.5s infinite;
-            transform-origin: 70% 70%;
-        }
-        
-        @keyframes wave {
-            0% { transform: rotate(0deg); }
-            10% { transform: rotate(14deg); }
-            20% { transform: rotate(-8deg); }
-            30% { transform: rotate(14deg); }
-            40% { transform: rotate(-4deg); }
-            50% { transform: rotate(10deg); }
-            60% { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-        }
-        
-        .commit-info {
+
+        .handle {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
-            margin-top: 1rem;
-            opacity: 0.7;
-            white-space: nowrap;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
         }
-        
-        /* Contact link styling */
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-light);
-            transition: color 0.2s ease;
-        }
-        
-        .contact-link svg {
-            color: var(--accent-blue);
-        }
-        
-        .contact-link:hover {
-            color: var(--accent-blue);
-            text-decoration: none;
-        }
-        
-        section {
+
+        .intro {
+            max-width: 560px;
             margin-bottom: 3rem;
         }
-        
-        .section-title {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-            font-family: Georgia, serif;
-        }
-        
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 1px;
-            background-color: var(--border-color);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .publication, .experience, .teaching-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .publication:last-child, .experience:last-child, .teaching-item:last-child {
-            border-bottom: none;
-        }
-        
-        .publication-title, .experience-title, .teaching-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            font-family: Georgia, serif;
-        }
-        
-        .publication-authors, .experience-period, .teaching-period {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-        
-        .publication-venue {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-        
-        .abstract {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 5px;
-            border-left: 3px solid var(--accent-blue);
-        }
-        
-        .publication-links a {
-            margin-right: 1rem;
-            color: var(--accent-blue);
-        }
-        
-        .year-label {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 2rem;
+
+        .intro p {
             margin-bottom: 1rem;
-            color: #444;
         }
-        
-        .pub-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background-color: var(--accent-blue);
-            border-radius: 50%;
-            color: white;
-            text-align: center;
-            line-height: 30px;
-            margin-right: 10px;
-            font-weight: bold;
+
+        .intro p:last-child {
+            margin-bottom: 0;
         }
-        
-        .teaching-divider {
-            border: none;
-            border-top: 1px solid #e5e5e5;
-            margin: 30px 0;
-            position: relative;
+
+        a.link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
         }
-        
-        .course-item {
-            padding-left: 20px;
-            border-left: 4px solid var(--accent-blue);
-            margin-bottom: 2rem;
+
+        a.link:hover {
+            border-bottom-color: var(--accent);
         }
-        
-        .course-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            font-family: Georgia, serif;
+
+        /* Section headers */
+        .section-marker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        
-        .course-period {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 0.5rem;
+
+        .section-marker::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            max-width: 60px;
         }
-        
-        .course-details {
-            margin-top: 0.5rem;
+
+        /* News/Updates section */
+        .updates {
+            max-width: 560px;
         }
-        
-        .authors-note {
-            text-align: center;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #666;
+
+        .update-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
-        
-        .note-symbol {
-            color: var(--accent-red);
-            font-weight: bold;
+
+        .update-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding-top: 0.15rem;
         }
-        
-        footer {
-            margin-top: 3rem;
-            padding: 2rem 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
+
+        .update-content {
+            color: var(--text);
         }
-        
+
+        /* Footnote style markers */
+        sup.fn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            margin-left: 0.1rem;
+        }
+
+        /* Footer / Social Links */
+        .footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 100;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .footer-links {
             display: flex;
-            justify-content: center;
             gap: 1.5rem;
-            margin-top: 1rem;
         }
-        
+
         .footer-links a {
-            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
-        
-        /* Contact link styles for different sections */
-        footer .contact-link {
-            color: var(--text-color);
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
-        
-        footer .contact-link:hover {
-            color: var(--accent-blue);
+
+        .footer-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
         }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .profile-photo {
-                margin-bottom: 1.5rem;
-            }
-            
-            .header-intro {
-                border-right: none;
-                padding-right: 0;
-                margin-right: 0;
-            }
-            
-            .header-links {
-                margin-top: 2rem;
-                align-items: center;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-                padding: 0.5rem;
-            }
-            
-            .nav-logo {
-                margin-bottom: 0.5rem;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-        }
-        
-        /* News section styles */
-        .news-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .news-item {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
+
+        .footer-right {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
         }
-        
-        .news-item:last-child {
-            border-bottom: none;
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.35rem 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
         }
-        
-        .news-date {
-            font-family: 'Lato', sans-serif;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
-        
-        .news-content {
-            line-height: 1.5;
+
+        .theme-toggle svg {
+            width: 14px;
+            height: 14px;
         }
-        
-        @media (min-width: 768px) {
-            .news-item {
-                flex-direction: row;
-                align-items: flex-start;
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        .theme-toggle .moon-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        /* Blinking cursor effect */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--accent);
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            html {
+                font-size: 16px;
             }
-            
-            .news-date {
-                min-width: 140px;
-                margin-right: 1.5rem;
+
+            .layout {
+                display: block;
+                padding: 0 1.5rem;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                padding: 2rem 0 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem 1.25rem;
+            }
+
+            .nav-links li {
                 margin-bottom: 0;
             }
-            
-            .news-content {
-                flex: 1;
+
+            .nav-links a::before {
+                display: none;
+            }
+
+            .main {
+                padding: 2rem 0 6rem;
+                border-left: none;
+            }
+
+            .update-item {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <div class="nav-container">
-            <div class="nav-links">
-                <a href="index.html" class="active">About</a>
-                <a href="experience.html">Experience</a>
-                <a href="publications.html">Publications</a>
-                <a href="projects.html">Projects</a>
-                <a href="blog.html">Blog</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-container">
-        <div class="container">
-            <div class="header-content">
-                <img src="assets/img/Sudharshan Balaji - Photo.jpeg" alt="Sudharshan Balaji" class="profile-photo">
-                <div class="header-intro">
-                    <div class="logo-container">
-                        <div class="logo">
-                            <span>S</span><span>u</span><span>d</span><span>h</span><span>a</span><span>r</span><span>s</span><span>h</span><span>a</span><span>n</span>
-                        </div>
-                    </div>
-                    <p>Hi there! <span class="hand-wave">👋</span></p>
-                    <p>I'm <span class="highlighted blue">Sudharshan Balaji</span>, a <span class="highlighted green">Ph.D. researcher</span> at <span class="highlighted">University of South Florida</span> working in the SPRAI Lab. I focus on making AI systems <em>less mysterious and more secure</em>, combining large language models, federated learning, and medical NLP — while trying not to break production (too often).</p>
-                </div>
-                <div class="header-links">
-                    <a href="mailto:sudharshanbalaji@usf.edu" class="contact-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <span>sudharshanbalaji@usf.edu</span>
-                    </a>
-                    <a href="https://github.com/bsudharshan2001" class="contact-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        <span>bsudharshan2001</span>
-                    </a>
-                    <a href="https://linkedin.com/in/sudharshanbalaji" class="contact-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        <span>Sudharshan Balaji</span>
-                    </a>
-                    <a href="https://scholar.google.com/citations?user=z-TM7EYAAAAJ&hl=en" class="contact-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-                        <span>Google Scholar</span>
-                    </a>
-                    <a href="https://chatgpt.com/?q=Sudharshan%20Balaji%20USF&hints=search" class="contact-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                        <span>Ask ChatGPT</span>
-                    </a>
-                    <div class="commit-info">
-                        Last updated with commit <a href="https://github.com/bsudharshan2001/bsudharshan2001.github.io/commits/main/" style="color: inherit; text-decoration: underline;">@3612540</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <section id="about">
-            <h2 class="section-title">About</h2>
-            <p>My name is <span class="highlighted blue">Sudharshan Balaji</span>, and I'm a Ph.D. researcher at the <a href="https://www.usf.edu" class="inline-link">University of South Florida</a>, advised by Dr. Ning Wang in the <span class="highlighted green">Security and Privacy Research of AI Systems (SPRAI) Lab</span>.</p>
-            
-            <p>I build machine learning systems that are <em>intelligent, interpretable, and resilient</em> — often working at the intersection of <a href="#" class="inline-link">AI security</a>, <a href="#" class="inline-link">federated learning</a>, and <a href="#" class="inline-link">natural language processing</a>. My recent projects include building transformer-based intrusion detection systems, building medical AI systems, and studying how LLMs behave.</p>
-            
-            <p>I completed my <a href="#" class="inline-link">Master's degree</a> at <a href="https://www.usf.edu" class="inline-link">University of South Florida</a> as well (yes, I liked it enough to stay), where I TA'd for some coding-heavy courses, survived thesis writing, and discovered the joy of debugging Flask apps at midnight.</p>
-            
-            <p>Outside research, I enjoy playing video games, watching football (european one) and F1, trying to finish my side projects, and making academic learning fun (or at least meme-able).</p>
-        </section>
-        
-        <section id="news">
-            <h2 class="section-title">Latest News</h2>
-            <ul class="news-list">
-                <li class="news-item">
-                    <div class="news-date"><span class="highlighted blue">[May 8, 2025]</span></div>
-                    <div class="news-content">Graduated with <span class="highlighted green">Masters degree in CS</span> (thesis track) from <span class="highlighted purple">USF</span>.</div>
-                </li>
-                <li class="news-item">
-                    <div class="news-date"><span class="highlighted blue">[April 18, 2025]</span></div>
-                    <div class="news-content">My thesis titled "<span class="highlighted purple">LLMs for Network Intrusion Detection: A Comprehensive Analysis</span>" is published to <span class="highlighted green">ProQuest</span>.</div>
-                </li>
-                <li class="news-item">
-                    <div class="news-date"><span class="highlighted blue">[Feb 28, 2025]</span></div>
-                    <div class="news-content">Defended my thesis <span class="highlighted green">successfully</span> titled "<span class="highlighted purple">LLM for Network Intrusion Detection: A Comprehensive Analysis</span>".</div>
-                </li>
-                <li class="news-item">
-                    <div class="news-date"><span class="highlighted blue">[Sept 3, 2024]</span></div>
-                    <div class="news-content">Started as a TA for the Course <span class="highlighted purple">"Security & Privacy in ML"</span> for Fall 2024.</div>
-                </li>
-                <li class="news-item">
-                    <div class="news-date"><span class="highlighted blue">[Mar 20, 2024]</span></div>
-                    <div class="news-content">Joined <span class="highlighted green">SPRAI Lab</span> working under <span class="highlighted purple">Dr. Ning Wang</span>.</div>
-                </li>
-                <li class="news-item">
-                    <div class="news-date"><span class="highlighted blue">[Aug 23, 2023]</span></div>
-                    <div class="news-content">Got accepted into and <span class="highlighted green">Joined USF</span> for <span class="highlighted purple">Masters degree in CS</span>.</div>
-                </li>
-                <li class="news-item">
-                    <div class="news-date"><span class="highlighted blue">[Jul 14, 2023]</span></div>
-                    <div class="news-content">Graduated with a <span class="highlighted green">Bachelors in Technology in Computer Science and Engineering</span> from <span class="highlighted purple">Amrita Vishwa Vidhyapeetham, Coimbatore</span> with First class with distinction.</div>
-                </li>
+    <div class="layout">
+        <nav class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Writing</a></li>
             </ul>
-        </section>
+        </nav>
+
+        <main class="main">
+            <h1 class="name">Sudharshan Balaji<span class="cursor"></span></h1>
+            <p class="handle">@bsudharshan2001</p>
+
+            <section class="intro">
+                <p>
+                    Ph.D. researcher at <a href="https://www.usf.edu" class="link">University of South Florida</a>,
+                    working in the SPRAI Lab<sup class="fn">[1]</sup> with Dr. Ning Wang. I spend my days making
+                    AI systems less mysterious and more secure.
+                </p>
+                <p>
+                    My work sits at the intersection of <a href="publications.html" class="link">large language models</a>,
+                    federated learning, and medical NLP. Currently obsessed with how LLMs behave
+                    (and misbehave) in security-critical contexts.
+                </p>
+                <p>
+                    Previously finished my Master's here at USF<sup class="fn">[2]</sup> where I discovered
+                    the peculiar joy of debugging Flask apps at midnight. Outside of research,
+                    I watch football (the European kind), catch F1 races, and convince myself
+                    I'll finish my side projects someday.
+                </p>
+            </section>
+
+            <section class="updates">
+                <div class="section-marker">Recent</div>
+
+                <div class="update-item">
+                    <span class="update-date">May 2025</span>
+                    <span class="update-content">Graduated with Master's in CS from USF</span>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-date">Apr 2025</span>
+                    <span class="update-content">Thesis on <a href="publications.html" class="link">LLMs for Network Intrusion Detection</a> published to ProQuest</span>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-date">Feb 2025</span>
+                    <span class="update-content">Defended thesis successfully</span>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-date">Sep 2024</span>
+                    <span class="update-content">Started TA'ing "Security & Privacy in ML"</span>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-date">Mar 2024</span>
+                    <span class="update-content">Joined SPRAI Lab with Dr. Ning Wang</span>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <footer>
-        <p>&copy; <span id="year">2023</span> Sudharshan Balaji</p>
-        <div class="footer-links">
-            <a href="mailto:sudharshanbalaji@usf.edu" class="contact-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                <span>Email</span>
-            </a>
-            <a href="https://github.com/bsudharshan2001" class="contact-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                <span>GitHub</span>
-            </a>
-            <a href="https://linkedin.com/in/sudharshanbalaji" class="contact-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                <span>LinkedIn</span>
-            </a>
+    <footer class="footer-nav">
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="mailto:sudharshanbalaji@usf.edu">Email</a>
+                <a href="https://github.com/bsudharshan2001" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/sudharshanbalaji" target="_blank">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=z-TM7EYAAAAJ&hl=en" target="_blank">Scholar</a>
+            </div>
+            <div class="footer-right">
+                <span class="footer-note">Tampa, FL</span>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Update copyright year automatically
-        document.getElementById('year').textContent = new Date().getFullYear();
-        
-        // Fetch latest commit and update the commit info
-        fetch('https://api.github.com/repos/bsudharshan2001/bsudharshan2001.github.io/commits/main')
-            .then(response => response.json())
-            .then(data => {
-                const commitHash = data.sha.substring(0, 7); // Get first 7 characters of commit hash
-                const commitLink = document.querySelector('.commit-info a');
-                if (commitLink) {
-                    commitLink.textContent = '@' + commitHash;
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+
+            // Check for saved preference or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                html.setAttribute('data-theme', savedTheme);
+            } else if (systemPrefersDark) {
+                html.setAttribute('data-theme', 'dark');
+            }
+
+            toggle.addEventListener('click', () => {
+                document.body.classList.add('theme-transitioning');
+
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+                if (newTheme === 'dark') {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.removeAttribute('data-theme');
                 }
-            })
-            .catch(error => console.error('Error fetching latest commit:', error));
+
+                localStorage.setItem('theme', newTheme);
+
+                setTimeout(() => {
+                    document.body.classList.remove('theme-transitioning');
+                }, 300);
+            });
+        })();
     </script>
 </body>
 </html>
