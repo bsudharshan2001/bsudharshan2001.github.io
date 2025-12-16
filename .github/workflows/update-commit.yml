@@ -1,0 +1,41 @@
+name: Update Commit Hash
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  update-hash:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update commit hash in HTML files
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+
+          # Update all HTML files with the new commit hash
+          for file in *.html; do
+            sed -i "s/data-commit=\"[a-f0-9]*\"/data-commit=\"${SHORT_SHA}\"/g" "$file"
+            sed -i "s/>v\.[a-f0-9]*</>v.${SHORT_SHA}</g" "$file"
+          done
+
+      - name: Check for changes
+        id: check
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push if changed
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "Update commit hash to $(git rev-parse --short HEAD~1)"
+          git push
