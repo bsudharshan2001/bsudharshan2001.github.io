@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline | Sudharshan Balaji</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf8f5;
+            --bg-alt: #f5f2ed;
+            --text: #2c2c2c;
+            --text-muted: #6b6b6b;
+            --accent: #c4704b;
+            --accent-hover: #a85a38;
+            --border: #e8e4de;
+            --selection: #c4704b22;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --bg-alt: #242424;
+            --text: #e8e4de;
+            --text-muted: #9a9a9a;
+            --accent: #e8956a;
+            --accent-hover: #f0a77d;
+            --border: #333333;
+            --selection: #e8956a33;
+        }
+
+        html { color-scheme: light; }
+        [data-theme="dark"] { color-scheme: dark; }
+
+        ::selection { background: var(--selection); }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+            min-height: 100vh;
+            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.theme-transitioning,
+        body.theme-transitioning * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 1000;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            min-height: 100vh;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .sidebar {
+            padding: 4rem 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin-bottom: auto;
+        }
+
+        .nav-links li { margin-bottom: 0.25rem; }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--text); }
+
+        .nav-links a.active::before { opacity: 1; }
+
+        .main {
+            padding: 4rem 0 6rem 4rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 600px;
+        }
+
+        /* The vertical line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 95px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-entry {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            padding: 0 0 2.5rem 0;
+            position: relative;
+        }
+
+        .timeline-entry:last-child {
+            padding-bottom: 0;
+        }
+
+        /* The dot */
+        .timeline-entry::before {
+            content: '';
+            position: absolute;
+            left: 92px;
+            top: 6px;
+            width: 7px;
+            height: 7px;
+            background: var(--bg);
+            border: 1.5px solid var(--border);
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            z-index: 1;
+        }
+
+        .timeline-entry:hover::before {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .timeline-entry.major::before {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .timeline-entry.now::before {
+            background: var(--accent);
+            border-color: var(--accent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(196, 112, 75, 0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(196, 112, 75, 0); }
+        }
+
+        [data-theme="dark"] .timeline-entry.now::before {
+            animation: pulseDark 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseDark {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(232, 149, 106, 0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(232, 149, 106, 0); }
+        }
+
+        .entry-when {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-align: right;
+            padding-top: 2px;
+            line-height: 1.4;
+        }
+
+        .entry-when.fuzzy {
+            font-style: italic;
+            font-size: 0.6rem;
+        }
+
+        .entry-what {
+            padding-left: 1rem;
+        }
+
+        .entry-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+            line-height: 1.4;
+            transition: color 0.2s ease;
+        }
+
+        .timeline-entry:hover .entry-title {
+            color: var(--accent);
+        }
+
+        .timeline-entry.major .entry-title {
+            color: var(--accent);
+        }
+
+        .entry-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Era breaks */
+        .era {
+            grid-column: 1 / -1;
+            padding: 1.5rem 0 1rem;
+            margin-left: 111px;
+            position: relative;
+        }
+
+        .era::before {
+            content: '';
+            position: absolute;
+            left: -17px;
+            top: 50%;
+            width: 8px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .era-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        .footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 100;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        .footer-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.35rem 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .theme-toggle svg { width: 14px; height: 14px; }
+        .theme-toggle .sun-icon { display: none; }
+        .theme-toggle .moon-icon { display: block; }
+        [data-theme="dark"] .theme-toggle .sun-icon { display: block; }
+        [data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+
+        .commit-hash {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        .ask-ai {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ask-ai:hover { opacity: 0.8; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            html { font-size: 16px; }
+
+            .layout {
+                display: block;
+                padding: 0 1.5rem;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                padding: 2rem 0 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem 1.25rem;
+            }
+
+            .nav-links li { margin-bottom: 0; }
+            .nav-links a::before { display: none; }
+
+            .main {
+                padding: 2rem 0 6rem;
+                border-left: none;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-entry {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+                padding-left: 1.5rem;
+            }
+
+            .timeline-entry::before {
+                left: -3px;
+            }
+
+            .entry-when {
+                text-align: left;
+                font-size: 0.65rem;
+            }
+
+            .entry-what {
+                padding-left: 0;
+            }
+
+            .era {
+                margin-left: 1.5rem;
+            }
+
+            .era::before {
+                display: none;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <nav class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="timeline.html" class="active">Timeline</a></li>
+                <li><a href="blog.html">Writing</a></li>
+            </ul>
+        </nav>
+
+        <main class="main">
+            <h1 class="page-title">Timeline</h1>
+            <p class="page-note">Moments that mattered, roughly in order.</p>
+
+            <div class="timeline">
+                <div class="timeline-entry major">
+                    <div class="entry-when">Jun 2001</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Spawned into existence</div>
+                        <div class="entry-note">Born. No memory of signing up for this.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when fuzzy">somewhere<br>in between</div>
+                    <div class="entry-what">
+                        <div class="entry-title">First computer encounter</div>
+                        <div class="entry-note">Got introduced to computers and video games. Peak dopamine discovered.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when fuzzy">somewhere<br>in between</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Hello, World!</div>
+                        <div class="entry-note">Wrote first program in C. Felt like a hacker. Was not.</div>
+                    </div>
+                </div>
+
+                <div class="era">
+                    <span class="era-label">transitions</span>
+                </div>
+
+                <div class="timeline-entry major">
+                    <div class="entry-when">May 2019</div>
+                    <div class="entry-what">
+                        <div class="entry-title">High school completed</div>
+                        <div class="entry-note">Escaped Maharishi Vidya Mandir. Chennai chapter closed.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">Jun 2019</div>
+                    <div class="entry-what">
+                        <div class="entry-title">HP Pavilion Gaming 15</div>
+                        <div class="entry-note">First laptop. Portal to everything. Still miss it.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry major">
+                    <div class="entry-when">Jul 2019</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Amrita unlocked</div>
+                        <div class="entry-note">B.Tech CSE with 90% tuition waiver. Parents finally proud.</div>
+                    </div>
+                </div>
+
+                <div class="era">
+                    <span class="era-label">undergrad</span>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when fuzzy">~2020</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Neural networks clicked</div>
+                        <div class="entry-note">ML/DL during lockdown. Brain permanently rewired.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">2021</div>
+                    <div class="entry-what">
+                        <div class="entry-title">First hackathon</div>
+                        <div class="entry-note">Honeywell Smart City. Top 25 in India. Impostor syndrome activated.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">2022</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Research arc begins</div>
+                        <div class="entry-note">Started questioning everything. Academically, at least.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">Mar 2023</div>
+                    <div class="entry-what">
+                        <div class="entry-title">First real job</div>
+                        <div class="entry-note">ML Intern at dotkonnekt. First paycheck. Bought nothing useful.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry major">
+                    <div class="entry-when">Jun 2023</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Bachelor's done</div>
+                        <div class="entry-note">First class with distinction. Amrita chapter closed.</div>
+                    </div>
+                </div>
+
+                <div class="era">
+                    <span class="era-label">grad school</span>
+                </div>
+
+                <div class="timeline-entry major">
+                    <div class="entry-when">Aug 2023</div>
+                    <div class="entry-what">
+                        <div class="entry-title">New continent unlocked</div>
+                        <div class="entry-note">Master's at USF. Tampa Bay. Humidity: unexpected.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">Sep 2024</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Teaching begins</div>
+                        <div class="entry-note">GIA at USF. Paid to explain things I barely understand.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry major">
+                    <div class="entry-when">Feb 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Thesis defended</div>
+                        <div class="entry-note">Survived the committee. They asked hard questions. I survived.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">Apr 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Published (kinda)</div>
+                        <div class="entry-note">Thesis on ProQuest. Someone might read it. Someday.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry major">
+                    <div class="entry-when">May 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Master's completed</div>
+                        <div class="entry-note">Double degree haver. Professional student status confirmed.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">May 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Paper submitted</div>
+                        <div class="entry-note">EMNLP 2025. Years of work, one click. Hope dangerously high.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">Jul 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">First rejection</div>
+                        <div class="entry-note">ARR cycle said no. Reviewers were honest. Brutally.</div>
+                    </div>
+                </div>
+
+                <div class="era">
+                    <span class="era-label">phd</span>
+                </div>
+
+                <div class="timeline-entry major">
+                    <div class="entry-when">Aug 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">PhD arc begins</div>
+                        <div class="entry-note">Glutton for punishment. USF round 3. Dr. Wang believed in me.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">Oct 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Paper resubmitted</div>
+                        <div class="entry-note">EACL 2026. Hope springs eternal. Or maybe delusion.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">Nov 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Good reviews!</div>
+                        <div class="entry-note">Reviewers liked it. Finally. Meta reviewer: hold my beer.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="entry-when">Dec 2025</div>
+                    <div class="entry-what">
+                        <div class="entry-title">Second rejection</div>
+                        <div class="entry-note">Meta reviewer disagreed with everyone. Character development.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry now">
+                    <div class="entry-when">Present</div>
+                    <div class="entry-what">
+                        <div class="entry-title">The grind continues</div>
+                        <div class="entry-note">Still chasing that elusive first paper. Same enthusiasm since 2022.</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer-nav">
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="mailto:sudharshanbalaji@usf.edu">Email</a>
+                <a href="https://github.com/bsudharshan2001" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/sudharshanbalaji" target="_blank">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=z-TM7EYAAAAJ&hl=en" target="_blank">Scholar</a>
+                <a href="Sudharshan Balaji - Resume.pdf" target="_blank">Resume</a>
+                <a href="https://chatgpt.com/?q=Who+is+Sudharshan+Balaji+from+USF%3F&hints=search" target="_blank" class="ask-ai">Ask AI about me</a>
+            </div>
+            <div class="footer-right">
+                <span class="footer-note">Tampa, FL</span>
+                <span class="commit-hash">v.0000000</span>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme) { html.setAttribute('data-theme', savedTheme); }
+            else if (systemPrefersDark) { html.setAttribute('data-theme', 'dark'); }
+            toggle.addEventListener('click', () => {
+                document.body.classList.add('theme-transitioning');
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                if (newTheme === 'dark') { html.setAttribute('data-theme', 'dark'); }
+                else { html.removeAttribute('data-theme'); }
+                localStorage.setItem('theme', newTheme);
+                setTimeout(() => { document.body.classList.remove('theme-transitioning'); }, 300);
+            });
+
+            fetch('https://api.github.com/repos/bsudharshan2001/bsudharshan2001.github.io/commits/main')
+                .then(res => res.json())
+                .then(data => { document.querySelector('.commit-hash').textContent = 'v.' + data.sha.substring(0, 7); })
+                .catch(() => { document.querySelector('.commit-hash').style.display = 'none'; });
+        })();
+    </script>
+</body>
+</html>
