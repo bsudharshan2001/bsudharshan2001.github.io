@@ -37,7 +37,7 @@ Amrita University, Coimbatore, India
 ## Experience
 
 ### Graduate Research Assistant - SPRAI Lab, USF, Tampa, FL, USA
-**Aug 2024 - Present**
+**Aug 2025 - Present**
 
 - Continuing doctoral research under Prof. Ning Wang focused on Byzantine-resilient Federated Learning and the security aspects of large language models (LLMs).
 - Conducting multi-wave experiments using Flower-based federated learning testbeds with Raspberry Pi and Jetson devices, investigating effects of model poisoning on non-IID data distributions and Byzantine aggregation robustness.
