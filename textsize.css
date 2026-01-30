@@ -1,0 +1,77 @@
+/* Text Size Control */
+.text-size-control {
+    display: flex;
+    gap: 0;
+}
+
+.text-size-btn {
+    background: none;
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.45rem;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.text-size-btn:first-child {
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+}
+
+.text-size-btn:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.text-size-btn:hover:not(.disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Keep shared border colored on hover of either button */
+.text-size-btn:first-child:hover:not(.disabled) + .text-size-btn {
+    border-left-color: var(--accent);
+}
+
+.text-size-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 2rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    max-width: 340px;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    line-height: 1.5;
+}
+
+.toast.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .toast {
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+        bottom: 5rem;
+    }
+}

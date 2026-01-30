@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="textsize.css">
+    <script>(function(){var s=localStorage.getItem('textScale');if(s!==null){document.documentElement.style.setProperty('--font-scale',[0.8,0.85,0.9,1,1.1,1.2,1.35][+s]||1);}})();</script>
     <style>
         :root {
             --bg: #faf8f5;
@@ -46,7 +48,7 @@
         }
 
         html {
-            font-size: 18px;
+            font-size: calc(19px * var(--font-scale, 1));
             scroll-behavior: smooth;
         }
 
@@ -369,7 +371,7 @@
 
         @media (max-width: 768px) {
             html {
-                font-size: 16px;
+                font-size: calc(17px * var(--font-scale, 1));
             }
 
             .layout {
@@ -558,5 +560,6 @@
         })();
     </script>
     <script src="search.js"></script>
+    <script src="textsize.js"></script>
 </body>
 </html>
