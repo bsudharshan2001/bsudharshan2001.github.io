@@ -286,7 +286,12 @@
             right: 0;
             background: var(--bg);
             border-top: 1px solid var(--border);
-            padding: 1rem 2rem;
+            --footer-pad-y: clamp(0.6rem, calc(1rem / var(--font-scale)), 1rem);
+            --footer-pad-x: clamp(1rem, calc(2rem / var(--font-scale)), 2rem);
+            --footer-gap: clamp(0.75rem, calc(1.5rem / var(--font-scale)), 1.5rem);
+            --footer-links-gap: clamp(0.5rem, calc(1.5rem / var(--font-scale)), 1.5rem);
+            --footer-right-gap: clamp(0.5rem, calc(1.25rem / var(--font-scale)), 1.25rem);
+            padding: var(--footer-pad-y) var(--footer-pad-x);
             z-index: 100;
         }
 
@@ -296,11 +301,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: var(--footer-gap);
+            flex-wrap: nowrap;
         }
 
         .footer-links {
             display: flex;
-            gap: 1.5rem;
+            gap: var(--footer-links-gap);
+            flex-wrap: nowrap;
         }
 
         .footer-links a {
@@ -309,6 +317,7 @@
             color: var(--text-muted);
             text-decoration: none;
             transition: color 0.2s ease;
+            white-space: nowrap;
         }
 
         .footer-links a:hover {
@@ -319,12 +328,14 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
             color: var(--text-muted);
+            white-space: nowrap;
         }
 
         .footer-right {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: var(--footer-right-gap);
+            flex-wrap: nowrap;
         }
 
         .theme-toggle {
@@ -361,10 +372,12 @@
         }
 
         .ask-ai {
+            position: relative;
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            white-space: nowrap;
         }
 
         .ask-ai:hover { opacity: 0.8; }
